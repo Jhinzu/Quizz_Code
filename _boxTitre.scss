@@ -1,0 +1,24 @@
+*
+{
+    box-sizing: border-box;
+}
+.containerAll
+{
+    background-color: #395980;
+    height: 800px;
+    padding: 5%;
+    .boxTitre
+    {
+        border-radius: 20px;
+        background-color: #02427C;
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+        h1
+        {
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+    }
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="IQ.css">
+    <title>IQ-Geek</title>
+</head>
+<body>
+    <main class="containerAll">
+        <!-- premier screen !  -->
+        <div id = "screen1" class="screen1">
+            <div class="boxTitre">
+                <img src="Images/avatar_Punpunn.png" alt="logo-cite" height="100px"/>
+                <h1>IQGeek</h1>
+            </div>
+            <div class="containerQuestion">
+                <div class="boxScore">
+
+                </div>
+                <div id="imgQ"></div>
+                <div id="textQ" class="textQ"><p class="pStyle"></p></div>
+                <label for="radio1" id="reponse1Q" class="reponse1Q">
+                    <input type="radio" id="radio1" class="radio1" name="question"/>
+                    <p class="pStyle"></p>
+                </label>
+
+                <label for="radio2" id="reponse2Q" class="reponse2Q">
+                    <input type="radio" id="radio2" class="radio2" name="question"/>
+                    <p class="pStyle"></p>
+                </label>
+
+                <label for="radio3" id="reponse3Q" class="reponse3Q">
+                    <input type="radio" id="radio3" class="radio3" name="question"/>
+                    <p class="pStyle"></p>
+                </label>
+
+                <label for="radio4" id="reponse4Q" class="reponse4Q">
+                    <input type="radio" id="radio4"class="radio4" name="question"/>
+                    <p class="pStyle"></p>
+                </label>
+                
+                <button id="buttonValider" class="buttonValider">Valider</button>
+            </div>
+        </div>
+
+        <!-- deuxième screen ! -->
+        <div id = "screen2" class="screen2">
+            <div class="boxScore"></div>
+            <div class="boxResult">
+                <h2>top player</h2>
+            </div>
+            <button id="buttonRetry" class="buttonRetry">Retry</button>
+        </div>
+
+    </main>
+
+    <script src="IQ.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.reponseSelection {
+  background-color: #02427C;
+  border: 5px green solid;
+  border-radius: 10px;
+  height: 50px;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.containerAll {
+  background-color: #395980;
+  height: 800px;
+  padding: 5%;
+}
+.containerAll .boxTitre {
+  border-radius: 20px;
+  background-color: #02427C;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}
+.containerAll .boxTitre h1 {
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.containerQuestion {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin-top: 5%;
+  gap: 20px;
+}
+.containerQuestion .boxScore {
+  border-radius: 5%;
+  background-color: #02427C;
+  border-radius: 20px;
+  height: 50px;
+  width: 50%;
+}
+.containerQuestion .textQ {
+  border-radius: 5%;
+  background-color: #02427C;
+  border-radius: 10px;
+  height: 100px;
+  width: 100%;
+}
+.containerQuestion .reponse1Q, .containerQuestion .reponse2Q, .containerQuestion .reponse3Q, .containerQuestion .reponse4Q {
+  background-color: #02427C;
+  border-radius: 10px;
+  height: 80px;
+  width: 100%;
+}
+.containerQuestion .buttonValider {
+  width: 50%;
+  height: 50px;
+  border: 2px #02427C solid;
+  border-radius: 10px;
+  background-color: #0758a3;
+  font-size: 1em;
+  color: white;
+}
+.containerQuestion .radio1, .containerQuestion .radio2, .containerQuestion .radio3, .containerQuestion .radio4 {
+  display: none;
+}
+.containerQuestion .pStyle {
+  margin: 0;
+  width: 95%;
+  height: 95%;
+  color: white;
+  padding: 1%;
+}
+
+.screen2 {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 3%;
+}
+.screen2 .boxScore {
+  border-radius: 5%;
+  background-color: #02427C;
+  border-radius: 20px;
+  height: 70px;
+  width: 70%;
+}
+.screen2 .boxResult {
+  border-radius: 5%;
+  background-color: #02427C;
+  border-radius: 10px;
+  height: 60%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.screen2 .boxResult h2 {
+  color: white;
+  font-size: 2em;
+}
+.screen2 .buttonRetry {
+  width: 100%;
+  height: 50px;
+  border: 2px #02427C solid;
+  border-radius: 10px;
+  background-color: #0758a3;
+  font-size: 1.5em;
+  color: black;
+}/*# sourceMappingURL=IQ.css.map */

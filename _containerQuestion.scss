@@ -1,0 +1,57 @@
+.containerQuestion
+{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-top: 5%;
+    gap: 20px;
+
+    .boxScore
+    {
+        border-radius: 5%;
+        background-color: #02427C;
+        border-radius: 20px;
+        height: 50px;
+        width: 50%;
+    }
+
+    .textQ
+    {
+        border-radius: 5%;
+        background-color: #02427C;
+        border-radius: 10px;
+        height: 100px;
+        width: 100%;
+    }
+
+    .reponse1Q,.reponse2Q,.reponse3Q,.reponse4Q
+    {
+        background-color: #02427C;
+        border-radius: 10px;
+        height: 80px;
+        width: 100%;  
+    }
+
+    .buttonValider
+    {
+        width: 50%;
+        height: 50px;
+        border: 2px #02427C solid;
+        border-radius: 10px;
+        background-color: #0758a3 ;
+        font-size: 1em;
+        color: white;
+    }
+    .radio1,.radio2,.radio3,.radio4
+        {
+            display: none;
+        }
+    .pStyle
+    {
+        margin: 0;
+        width: 95%;
+        height: 95%;
+        color: white;
+        padding: 1%;
+    }  
+}
