@@ -46,57 +46,113 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
     pElt[4].append(dataR4);
     
 
+    // quand je click sur une bonne réponse séléctioner mes 4 radio
+    const radio1Elt = document.querySelector("#radio1");
+    const radio2Elt = document.querySelector("#radio2");
+    const radio3Elt = document.querySelector("#radio3");
+    const radio4Elt = document.querySelector("#radio4");
+    const radioAllElt = [radio1Elt,radio2Elt,radio3Elt,radio4Elt];
 
-    // quand je click sur une bonne réponse
-        // séléctioner mes 4 radio
-        const radio1Elt = document.querySelector("#radio1");
-        const radio2Elt = document.querySelector("#radio2");
-        const radio3Elt = document.querySelector("#radio3");
-        const radio4Elt = document.querySelector("#radio4");
+    // 4 function de changement de style pour faire le cadre de séléction de réponse
+    radio1Elt.addEventListener("click", () => {
+        // ajoute reponseSelection
+        reponse1QElt.className = "reponseSelection";
+        //enlève reponsseSelection
+        reponse2QElt.className = "reponse2Q";
+        reponse3QElt.className = "reponse3Q";
+        reponse4QElt.className = "reponse4Q";
+    })
+    radio2Elt.addEventListener("click", () => {
+        // ajoute reponseSelection
+        reponse2QElt.className = "reponseSelection";
+        //enlève reponsseSelection
+        reponse1QElt.className = "reponse1Q";
+        reponse3QElt.className = "reponse3Q";
+        reponse4QElt.className = "reponse4Q";
+    })
+    radio3Elt.addEventListener("click", () => {
+        // ajoute reponseSelection
+        reponse3QElt.className = "reponseSelection";
+        //enlève reponsseSelection
+        reponse1QElt.className = "reponse1Q";
+        reponse2QElt.className = "reponse2Q";
+        reponse4QElt.className = "reponse4Q";
 
+        // console.log
+        // (radio1Elt.checked,radio2Elt.checked,radio3Elt.checked,radio4Elt.checked);
+    })
+    radio4Elt.addEventListener("click", () => {
+        // ajoute reponseSelection
+        reponse4QElt.className = "reponseSelection";
+        //enlève reponsseSelection
+        reponse1QElt.className = "reponse1Q";
+        reponse2QElt.className = "reponse2Q";
+        reponse3QElt.className = "reponse3Q";
 
-        // 4 function de changement de style pour faire le cadre de séléction de réponse
-        radio1Elt.addEventListener("click",()=>
-        {
-            // ajoute reponseSelection
-            reponse1QElt.className = "reponseSelection";
-            //enlève reponsseSelection
-            reponse2QElt.className = "reponse2Q";
-            reponse3QElt.className = "reponse3Q";
-            reponse4QElt.className = "reponse4Q";
-        })
-        radio2Elt.addEventListener("click",()=>
-        {
-            // ajoute reponseSelection
-            reponse2QElt.className = "reponseSelection";
-            //enlève reponsseSelection
-            reponse1QElt.className = "reponse1Q";
-            reponse3QElt.className = "reponse3Q";
-            reponse4QElt.className = "reponse4Q";
-        })
-        radio3Elt.addEventListener("click",()=>
-        {
-            // ajoute reponseSelection
-            reponse3QElt.className = "reponseSelection";
-            //enlève reponsseSelection
-            reponse1QElt.className = "reponse1Q";
-            reponse2QElt.className = "reponse2Q";
-            reponse4QElt.className = "reponse4Q";
+        // console.log
+        // (radio1Elt.checked,radio2Elt.checked,radio3Elt.checked,radio4Elt.checked);
+    })
 
-            // console.log (radio1Elt.checked,radio2Elt.checked,radio3Elt.checked,radio4Elt.checked);
-        })
-        radio4Elt.addEventListener("click",()=>
+    console.clear() //Attention j'ai clear la console 
+    const boxScoreELt = document.querySelector("#boxScore");
+    // crée une varaible score et l'afficher
+    let score = 0 ;
+    boxScoreELt.innerHTML = "Score : " + score ; 
+
+    //boutton Valider
+    const bValiderElt =document.querySelector("#buttonValider")
+    console.log(bValiderElt);
+
+    //quand je click sur valider ajoute 1 au score celon la réponse
+    bValiderElt.addEventListener("click",()=>
+    {
+        //bonne réponse
+        if (data[result].correct == pElt[1].innerText && radio1Elt.checked == true )
         {
-            // ajoute reponseSelection
-            reponse4QElt.className = "reponseSelection";
-            //enlève reponsseSelection
-            reponse1QElt.className = "reponse1Q";
-            reponse2QElt.className = "reponse2Q";
-            reponse3QElt.className = "reponse3Q";
+            //prend +1 a chaque bonne réponse grace a la variable score
+            boxScoreELt.innerHTML = "Score : " + ++score
+            //changement de class pour vérifier les bonne ou mauvaise question
+
             
-            // console.log (radio1Elt.checked,radio2Elt.checked,radio3Elt.checked,radio4Elt.checked);
-        })
-        
+        }
+        else if (data[result].correct == pElt[2].innerText && radio2Elt.checked == true )
+        {
+            //prend +1 a chaque bonne réponse grace a la variable score
+            boxScoreELt.innerHTML = "Score : " + ++score
+           
+        }
+        else if (data[result].correct == pElt[3].innerText && radio3Elt.checked == true )
+        {
+            //prend +1 a chaque bonne réponse grace a la variable score
+            boxScoreELt.innerHTML = "Score : " + ++score
+        }  
+        else if (data[result].correct == pElt[4].innerText && radio4Elt.checked == true )
+        {
+            //prend +1 a chaque bonne réponse grace a la variable score
+            boxScoreELt.innerHTML = "Score : " + ++score
+        }
+        //mauvaise réponse
+        else
+        {
+            //prend 0 si mauvaise réponse
+            console.log("non");
+            boxScoreELt.innerHTML = "Score : " + score
+            //changement de class pour vérifier les bonne ou mauvaise question
+            // bValiderElt.className = "hidden"
+            // if (data[result].correct !== pElt[1].innerText)
+            // {
+            //     reponse1QElt.className = "correctionNegative";
+            // }
+            // else if (data[result].correct !== pElt[2].innerText)
+            // {
+            //     reponse2QElt.className = "correctionNegative";
+            // }
+            
+        }
+
+    })
+    console.log (radioAllElt[0].innerText);
+    console.log (pElt)
 })
 
 

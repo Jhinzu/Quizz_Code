@@ -5,7 +5,8 @@
         "reponse1": "5",
         "reponse2": "4",
         "reponse3": "6",
-        "reponse4": "7"
+        "reponse4": "7",
+        "correct": "6"
     },
 
     {
@@ -13,7 +14,8 @@
         "reponse1": "let my variable = 12;",
         "reponse2": "let myVariable = 12;",
         "reponse3": "variable myVariable = 12;",
-        "reponse4": "let 12 = myVariable;"
+        "reponse4": "let 12 = myVariable;",
+        "correct": "let myVariable = 12;"
     },
 
     {
@@ -21,14 +23,16 @@
         "reponse1": "Une fois déclarées, leur valeur ne peut être modifiée",
         "reponse2": "On peut déclarer une constante sans l'initialiser",
         "reponse3": "Elles peuvent être utiles pour éviter les erreurs et comportements inattendus",
-        "reponse4": "Leur type peut être modifié après déclaration;"
+        "reponse4": "Leur type peut être modifié après déclaration;",
+        "correct" : "Leur type peut être modifié après déclaration;"
     },
     {
         "question": "En JavaScript, un object est déclaré comme une liste de paires clé/valeur entre…",
         "reponse1": "{} accolades",
         "reponse2": "[] crochets",
         "reponse3": "() parenthèses",
-        "reponse4": "aucune des réponses"
+        "reponse4": "aucune des réponses",
+        "correct": "{} accolades"
     },
     {
         "img":"Images/question5.png",
@@ -36,7 +40,8 @@
         "reponse1": "let title = book[title];",
         "reponse2": "let title = book.get('title');",
         "reponse3": "let title = book.title;",
-        "reponse4": "let title = title.book;"
+        "reponse4": "let title = title.book;",
+        "correct": "let title = book.title;"
     },
     {
         "img":"Images/question6.png",
@@ -44,21 +49,24 @@
         "reponse1": "let firstMovie = Movie(\"L'Histoire de Tao\", \"Will Alexander\", 90);",
         "reponse2": "let firstMovie = new Movie(\"L'Histoire de Tao\", \"Will Alexander\", 90);",
         "reponse3": "let firstMovie = class Movie(\"L'Histoire de Tao\", \"Will Alexander\", 90);",
-        "reponse4": "let firstMovie(\"L'Histoire de Tao\", \"Will Alexander\", 90);"
+        "reponse4": "let firstMovie(\"L'Histoire de Tao\", \"Will Alexander\", 90);",
+        "correct": "let firstMovie = new Movie(\"L'Histoire de Tao\", \"Will Alexander\", 90);"
     },
     {
         "question": "On déclare un array (tableau) comme une liste d'éléments, séparés par des virgules, entre…",
         "reponse1": "{} accolades",
         "reponse2": "[] crochets",
         "reponse3": "() parenthèses",
-        "reponse4": "aucune des réponses"
+        "reponse4": "aucune des réponses",
+        "correct": "[] crochets"
     },
     {
-        "question": "On déclare un array (tableau) comme une liste d'éléments, séparés par des virgules, entre…",
+        "question": "Comment feriez-vous pour calculer le nombre d'éléments dans l'array  onlineUsers  ?",
         "reponse1": "let numberOfUsers = onlineUsers.size;",
         "reponse2": "let numberOfUsers = onlineUsers.quantity;",
         "reponse3": "let numberOfUsers = onlineUsers.index;",
-        "reponse4": "let numberOfUsers = onlineUsers.length;"
+        "reponse4": "let numberOfUsers = onlineUsers.length;",
+        "correct": "let numberOfUsers = onlineUsers.length;"
     }
 ]
 

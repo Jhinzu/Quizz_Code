@@ -7,11 +7,31 @@
 }
 
 .reponseSelection {
-  background-color: #02427C;
   border: 5px green solid;
+  background-color: #02427C;
   border-radius: 10px;
-  height: 50px;
+  height: 80px;
   width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.correctionPositive {
+  background-color: green;
+  border-radius: 10px;
+  height: 80px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.correctionNegative {
+  background-color: red;
+  border-radius: 10px;
+  height: 80px;
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 * {
@@ -56,12 +76,16 @@
   border-radius: 10px;
   height: 100px;
   width: 100%;
+  display: flex;
+  align-items: center;
 }
 .containerQuestion .reponse1Q, .containerQuestion .reponse2Q, .containerQuestion .reponse3Q, .containerQuestion .reponse4Q {
   background-color: #02427C;
   border-radius: 10px;
   height: 80px;
   width: 100%;
+  display: flex;
+  align-items: center;
 }
 .containerQuestion .buttonValider {
   width: 50%;
@@ -77,10 +101,17 @@
 }
 .containerQuestion .pStyle {
   margin: 0;
-  width: 95%;
-  height: 95%;
+  padding: 0% 5% 0% 5%;
+  width: 100%;
   color: white;
-  padding: 1%;
+  text-align: center;
+}
+.containerQuestion .boxScore {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5em;
 }
 
 .screen2 {

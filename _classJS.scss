@@ -11,9 +11,31 @@
 
 .reponseSelection
 {
-    background-color: #02427C;
     border: 5px green solid;
+    background-color: #02427C;
     border-radius: 10px;
-    height: 50px;
+    height: 80px;
     width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.correctionPositive
+{
+    background-color: green;
+    border-radius: 10px;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.correctionNegative
+{
+    background-color: red;
+    border-radius: 10px;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
