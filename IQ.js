@@ -6,13 +6,15 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
     const screen1Elt = document.querySelector(".screen1");
     const textQElt = document.querySelector("#textQ");
     const pElt = document.querySelectorAll("p");
-    console.log (pElt);
+    const containerQuestionElt = document.querySelector("#containerQuestion");
+    console.log (containerQuestionElt.children[6]);
     // selectioner mes 4 Label
     const reponse1QElt = document.querySelector("#reponse1Q");
     const reponse2QElt = document.querySelector("#reponse2Q");
     const reponse3QElt = document.querySelector("#reponse3Q");
     const reponse4QElt = document.querySelector("#reponse4Q");
 
+    //je chache la deuxièmes pages
     screen2Elt.className = "hidden";
     
     //fonction random de 0 a 7 donc 8
@@ -28,17 +30,9 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
     const dataR2 = data[result].reponse2
     const dataR3 = data[result].reponse3
     const dataR4 = data[result].reponse4
-    console.log (result);
 
     // afficher notre contenu json
-    // crée des élément pour mieux disposé nos élémment json
-
     // ajouter les texte dans nos éléments
-    // textQElt.append(dataQ);
-    // reponse1QElt.append(dataR1);
-    // reponse2QElt.append(dataR2);
-    // reponse3QElt.append(dataR3);
-    // reponse4QElt.append(dataR4);
     pElt[0].append(dataQ);
     pElt[1].append(dataR1);
     pElt[2].append(dataR2);
@@ -46,14 +40,14 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
     pElt[4].append(dataR4);
     
 
-    // quand je click sur une bonne réponse séléctioner mes 4 radio
+    // querySelector de mes 4 radio (input)
     const radio1Elt = document.querySelector("#radio1");
     const radio2Elt = document.querySelector("#radio2");
     const radio3Elt = document.querySelector("#radio3");
     const radio4Elt = document.querySelector("#radio4");
     const radioAllElt = [radio1Elt,radio2Elt,radio3Elt,radio4Elt];
 
-    // 4 function de changement de style pour faire le cadre de séléction de réponse
+    // 4 function de changement de style pour faire le cadre de séléction de réponse quand on click sur nos input
     radio1Elt.addEventListener("click", () => {
         // ajoute reponseSelection
         reponse1QElt.className = "reponseSelection";
@@ -77,9 +71,6 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
         reponse1QElt.className = "reponse1Q";
         reponse2QElt.className = "reponse2Q";
         reponse4QElt.className = "reponse4Q";
-
-        // console.log
-        // (radio1Elt.checked,radio2Elt.checked,radio3Elt.checked,radio4Elt.checked);
     })
     radio4Elt.addEventListener("click", () => {
         // ajoute reponseSelection
@@ -88,22 +79,21 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
         reponse1QElt.className = "reponse1Q";
         reponse2QElt.className = "reponse2Q";
         reponse3QElt.className = "reponse3Q";
-
-        // console.log
-        // (radio1Elt.checked,radio2Elt.checked,radio3Elt.checked,radio4Elt.checked);
     })
-
-    console.clear() //Attention j'ai clear la console 
+    
+    //QuerySelector de ma box de score
     const boxScoreELt = document.querySelector("#boxScore");
-    // crée une varaible score et l'afficher
+    // crée une varaible score et l'afficher a 0 au début
     let score = 0 ;
     boxScoreELt.innerHTML = "Score : " + score ; 
 
-    //boutton Valider
+    //QuerySelector boutton Valider
     const bValiderElt =document.querySelector("#buttonValider")
-    console.log(bValiderElt);
+    //crée un élément pour afficher la correction 
+    const divCorrectionAdd = document.createElement("div");
+    containerQuestionElt.insertBefore(divCorrectionAdd,containerQuestionElt.children[7]);
 
-    //quand je click sur valider ajoute 1 au score celon la réponse
+    //quand je click sur valider ajoute 1 au score celon la réponse et change de class pour afficher la corréction et la deuxièmes pages
     bValiderElt.addEventListener("click",()=>
     {
         //bonne réponse
@@ -112,24 +102,62 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
             //prend +1 a chaque bonne réponse grace a la variable score
             boxScoreELt.innerHTML = "Score : " + ++score
             //changement de class pour vérifier les bonne ou mauvaise question
-
+            reponse1QElt.className = "correctionPositive";
+            reponse2QElt.className = "correctionNegative";
+            reponse3QElt.className = "correctionNegative";
+            reponse4QElt.className = "correctionNegative";
+            //Bulle de correction 
+            divCorrectionAdd.className = "bulleCorrection";
+            divCorrectionAdd.append(data[result].correction);
+            //enlèves le boutton Valider
+            bValiderElt.className = "hidden";
             
         }
         else if (data[result].correct == pElt[2].innerText && radio2Elt.checked == true )
         {
             //prend +1 a chaque bonne réponse grace a la variable score
             boxScoreELt.innerHTML = "Score : " + ++score
+            //changement de class pour vérifier les bonne ou mauvaise question
+            reponse2QElt.className = "correctionPositive";
+            reponse1QElt.className = "correctionNegative";
+            reponse3QElt.className = "correctionNegative";
+            reponse4QElt.className = "correctionNegative";
+            //Bulle de correction
+            divCorrectionAdd.className = "bulleCorrection";
+            divCorrectionAdd.append(data[result].correction);
+            //enlèves le boutton Valider
+            bValiderElt.className = "hidden";
            
         }
         else if (data[result].correct == pElt[3].innerText && radio3Elt.checked == true )
         {
             //prend +1 a chaque bonne réponse grace a la variable score
             boxScoreELt.innerHTML = "Score : " + ++score
+            //changement de class pour vérifier les bonne ou mauvaise question
+            reponse3QElt.className = "correctionPositive";
+            reponse2QElt.className = "correctionNegative";
+            reponse1QElt.className = "correctionNegative";
+            reponse4QElt.className = "correctionNegative";
+            //Bulle de correction
+            divCorrectionAdd.className = "bulleCorrection";
+            divCorrectionAdd.append(data[result].correction);
+            //enlèves le boutton Valider
+            bValiderElt.className = "hidden";
         }  
         else if (data[result].correct == pElt[4].innerText && radio4Elt.checked == true )
         {
             //prend +1 a chaque bonne réponse grace a la variable score
             boxScoreELt.innerHTML = "Score : " + ++score
+            //changement de class pour vérifier les bonne ou mauvaise question
+            reponse4QElt.className = "correctionPositive";
+            reponse2QElt.className = "correctionNegative";
+            reponse3QElt.className = "correctionNegative";
+            reponse1QElt.className = "correctionNegative";
+            //Bulle de correction
+            divCorrectionAdd.className = "bulleCorrection";
+            divCorrectionAdd.append(data[result].correction);
+            //enlèves le boutton Valider
+            bValiderElt.className = "hidden";
         }
         //mauvaise réponse
         else
@@ -137,22 +165,166 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
             //prend 0 si mauvaise réponse
             console.log("non");
             boxScoreELt.innerHTML = "Score : " + score
-            //changement de class pour vérifier les bonne ou mauvaise question
+            // changement de class pour vérifier les bonne ou mauvaise question
             // bValiderElt.className = "hidden"
-            // if (data[result].correct !== pElt[1].innerText)
-            // {
-            //     reponse1QElt.className = "correctionNegative";
-            // }
-            // else if (data[result].correct !== pElt[2].innerText)
-            // {
-            //     reponse2QElt.className = "correctionNegative";
-            // }
+            if (data[result].correct !== pElt[1].innerText)
+            {
+                //changement de class pour vérifier les bonne ou mauvaise question
+                reponse1QElt.className = "correctionNegative";
+                //Bulle de correction
+                divCorrectionAdd.className = "bulleCorrection";
+                divCorrectionAdd.append(data[result].correction);
+                //enlèves le boutton Valider
+                bValiderElt.className = "hidden";
+
+                if (data[result].correct == pElt[2].innerText)
+                {
+                    reponse2QElt.className = "correctionPositive";
+                    reponse3QElt.className = "correctionNegative";
+                    reponse4QElt.className = "correctionNegative";
+                    
+                    //enlèves le boutton Valider
+                    bValiderElt.className = "hidden";
+                }
+                else if (data[result].correct == pElt[3].innerText)
+                {
+                    reponse3QElt.className = "correctionPositive";
+                    reponse2QElt.className = "correctionNegative";
+                    reponse4QElt.className = "correctionNegative";
+                    
+                    //enlèves le boutton Valider
+                    bValiderElt.className = "hidden";
+                    
+                }
+                else if (data[result].correct == pElt[4].innerText)
+                {
+                    reponse4QElt.className = "correctionPositive";
+                    reponse2QElt.className = "correctionNegative";
+                    reponse3QElt.className = "correctionNegative";
+                    
+                    //enlèves le boutton Valider
+                    bValiderElt.className = "hidden";
+                }
+
             
+            }
+            else if (data[result].correct !== pElt[2].innerText)
+            {
+                //changement de class pour vérifier les bonne ou mauvaise question
+                reponse2QElt.className = "correctionNegative";
+                //Bulle de correction
+                divCorrectionAdd.className = "bulleCorrection";
+                divCorrectionAdd.append(data[result].correction);
+                //enlèves le boutton Valider
+                bValiderElt.className = "hidden";
+
+                if (data[result].correct == pElt[1].innerText)
+                {
+                    reponse1QElt.className = "correctionPositive";
+                    reponse3QElt.className = "correctionNegative";
+                    reponse4QElt.className = "correctionNegative";
+                    
+                    //enlèves le boutton Valider
+                    bValiderElt.className = "hidden";
+                }
+                else if (data[result].correct == pElt[3].innerText)
+                {
+                    reponse3QElt.className = "correctionPositive";
+                    reponse1QElt.className = "correctionNegative";
+                    reponse4QElt.className = "correctionNegative";
+                    
+                    //enlèves le boutton Valider
+                    bValiderElt.className = "hidden";
+                }
+                else if (data[result].correct == pElt[4].innerText)
+                {
+                    reponse4QElt.className = "correctionPositive";
+                    reponse1QElt.className = "correctionNegative";
+                    reponse3QElt.className = "correctionNegative";
+                    
+                    //enlèves le boutton Valider
+                    bValiderElt.className = "hidden";
+                }
+            }
+            else if (data[result].correct !== pElt[3].innerText)
+            {
+                //changement de class pour vérifier les bonne ou mauvaise question
+                reponse3QElt.className = "correctionNegative";
+                //Bulle de correction
+                divCorrectionAdd.className = "bulleCorrection";
+                divCorrectionAdd.append(data[result].correction);
+                //enlèves le boutton Valider
+                bValiderElt.className = "hidden";
+
+                if (data[result].correct == pElt[1].innerText)
+                {
+                    reponse1QElt.className = "correctionPositive";
+                    reponse2QElt.className = "correctionNegative";
+                    reponse4QElt.className = "correctionNegative";
+                    
+                    //enlèves le boutton Valider
+                    bValiderElt.className = "hidden";
+                }
+                else if (data[result].correct == pElt[2].innerText)
+                {
+                    reponse2QElt.className = "correctionPositive";
+                    reponse1QElt.className = "correctionNegative";
+                    reponse4QElt.className = "correctionNegative";
+                    
+                    //enlèves le boutton Valider
+                    bValiderElt.className = "hidden";
+                }
+                else if (data[result].correct == pElt[4].innerText)
+                {
+                    reponse4QElt.className = "correctionPositive";
+                    reponse2QElt.className = "correctionNegative";
+                    reponse1QElt.className = "correctionNegative";
+                    
+                    //enlèves le boutton Valider
+                    bValiderElt.className = "hidden";
+                }
+            }
+            else if (data[result].correct !== pElt[4].innerText)
+            {
+                //changement de class pour vérifier les bonne ou mauvaise question
+                reponse4QElt.className = "correctionNegative";
+                //Bulle de correction
+                divCorrectionAdd.className = "bulleCorrection";
+                divCorrectionAdd.append(data[result].correction);
+                //enlèves le boutton Valider
+                bValiderElt.className = "hidden";
+
+                if (data[result].correct == pElt[1].innerText)
+                {
+                    reponse1QElt.className = "correctionPositive";
+                    reponse2QElt.className = "correctionNegative";
+                    reponse3QElt.className = "correctionNegative";
+                    
+                    //enlèves le boutton Valider
+                    bValiderElt.className = "hidden";
+                }
+                else if (data[result].correct == pElt[2].innerText)
+                {
+                    reponse2QElt.className = "correctionPositive";
+                    reponse1QElt.className = "correctionNegative";
+                    reponse3QElt.className = "correctionNegative";
+                    
+                    //enlèves le boutton Valider
+                    bValiderElt.className = "hidden";
+                }
+                else if (data[result].correct == pElt[3].innerText)
+                {
+                    reponse3QElt.className = "correctionPositive";
+                    reponse1QElt.className = "correctionNegative";
+                    reponse2QElt.className = "correctionNegative";
+                    
+                    //enlèves le boutton Valider
+                    bValiderElt.className = "hidden";
+                }
+            }  
         }
 
     })
-    console.log (radioAllElt[0].innerText);
-    console.log (pElt)
 })
 
 
