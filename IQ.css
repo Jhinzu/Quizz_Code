@@ -48,6 +48,16 @@
   font-size: 0.9em;
 }
 
+.bouttonNext {
+  width: 50%;
+  height: 50px;
+  border: 2px #02427C solid;
+  border-radius: 10px;
+  background-color: #0758a3;
+  font-size: 1em;
+  color: white;
+}
+
 * {
   box-sizing: border-box;
 }
