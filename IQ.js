@@ -16,6 +16,8 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
 
     //je chache la deuxièmes pages
     screen2Elt.className = "hidden";
+    // screen1Elt.className = "hidden";
+    // screen2Elt.className = "screen2";
     
     //fonction random de 0 a 7 donc 8
     const random = (number) =>
@@ -24,15 +26,16 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
     }
 
     // ajouter cette fonction ramdom a nos élément
-    let shuffledArray = data.sort((a, b) => 0.5 - Math.random());
-    console.log (shuffledArray);
-    let result = random(8);
+    let index = 0
+    let result = data.sort((a, b) => 0.5 - Math.random());
+    console.log (result);
+    // let result = random(8);
     // let result = random(8); // result sert a jouer notre fonction et avoir les mème résultat sur notre json
-    let dataQ = data[result].question;
-    let dataR1 = data[result].reponse1;
-    let dataR2 = data[result].reponse2;
-    let dataR3 = data[result].reponse3;
-    let dataR4 = data[result].reponse4;
+    let dataQ = result[index].question;
+    let dataR1 = result[index].reponse1;
+    let dataR2 = result[index].reponse2;
+    let dataR3 = result[index].reponse3;
+    let dataR4 = result[index].reponse4;
 
     // afficher notre contenu json
     // ajouter les texte dans nos éléments
@@ -108,7 +111,7 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
     bValiderElt.addEventListener("click",()=>
     {
         //bonne réponse
-        if (data[result].correct == pElt[1].innerText && radio1Elt.checked == true )
+        if (result[index].correct == pElt[1].innerText && radio1Elt.checked == true )
         {
             //prend +1 a chaque bonne réponse grace a la variable score
             boxScoreELt.innerHTML = "Score : " + ++score
@@ -119,7 +122,7 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
             reponse4QElt.className = "correctionNegative";
             //Bulle de correction 
             divCorrectionAdd.className = "bulleCorrection";
-            divCorrectionAdd.innerText = data[result].correction;
+            divCorrectionAdd.innerText = result[index].correction;
             //enlèves le boutton Valider
             bValiderElt.className = "hidden";
             // ajoute le bouton next
@@ -127,7 +130,7 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
 
             
         }
-        else if (data[result].correct == pElt[2].innerText && radio2Elt.checked == true )
+        else if (result[index].correct == pElt[2].innerText && radio2Elt.checked == true )
         {
             //prend +1 a chaque bonne réponse grace a la variable score
             boxScoreELt.innerHTML = "Score : " + ++score
@@ -138,14 +141,14 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
             reponse4QElt.className = "correctionNegative";
             //Bulle de correction
             divCorrectionAdd.className = "bulleCorrection";
-            divCorrectionAdd.innerText = data[result].correction;
+            divCorrectionAdd.innerText = result[index].correction;
             //enlèves le boutton Valider
             bValiderElt.className = "hidden";
             // ajoute le bouton next
             bouttonNextAdd.className = "bouttonNext";
            
         }
-        else if (data[result].correct == pElt[3].innerText && radio3Elt.checked == true )
+        else if (result[index].correct == pElt[3].innerText && radio3Elt.checked == true )
         {
             //prend +1 a chaque bonne réponse grace a la variable score
             boxScoreELt.innerHTML = "Score : " + ++score
@@ -156,13 +159,13 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
             reponse4QElt.className = "correctionNegative";
             //Bulle de correction
             divCorrectionAdd.className = "bulleCorrection";
-            divCorrectionAdd.innerText = data[result].correction;
+            divCorrectionAdd.innerText = result[index].correction;
             //enlèves le boutton Valider
             bValiderElt.className = "hidden";
             // ajoute le bouton next
             bouttonNextAdd.className = "bouttonNext";
         }  
-        else if (data[result].correct == pElt[4].innerText && radio4Elt.checked == true )
+        else if (result[index].correct == pElt[4].innerText && radio4Elt.checked == true )
         {
             //prend +1 a chaque bonne réponse grace a la variable score
             boxScoreELt.innerHTML = "Score : " + ++score
@@ -173,7 +176,7 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
             reponse1QElt.className = "correctionNegative";
             //Bulle de correction
             divCorrectionAdd.className = "bulleCorrection";
-            divCorrectionAdd.innerText = data[result].correction;
+            divCorrectionAdd.innerText = result[index].correction;
             //enlèves le boutton Valider
             bValiderElt.className = "hidden";
             // ajoute le bouton next
@@ -187,19 +190,19 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
             boxScoreELt.innerHTML = "Score : " + score
             // changement de class pour vérifier les bonne ou mauvaise question
             // bValiderElt.className = "hidden"
-            if (data[result].correct !== pElt[1].innerText)
+            if (result[index].correct !== pElt[1].innerText)
             {
                 //changement de class pour vérifier les bonne ou mauvaise question
                 reponse1QElt.className = "correctionNegative";
                 //Bulle de correction
                 divCorrectionAdd.className = "bulleCorrection";
-                divCorrectionAdd.innerText = data[result].correction;
+                divCorrectionAdd.innerText = result[index].correction;
                 //enlèves le boutton Valider
                 bValiderElt.className = "hidden";
                 // ajoute le bouton next
                 bouttonNextAdd.className = "bouttonNext";
 
-                if (data[result].correct == pElt[2].innerText)
+                if (result[index].correct == pElt[2].innerText)
                 {
                     reponse2QElt.className = "correctionPositive";
                     reponse3QElt.className = "correctionNegative";
@@ -208,7 +211,7 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
                     //enlèves le boutton Valider
                     bValiderElt.className = "hidden";
                 }
-                else if (data[result].correct == pElt[3].innerText)
+                else if (result[index].correct == pElt[3].innerText)
                 {
                     reponse3QElt.className = "correctionPositive";
                     reponse2QElt.className = "correctionNegative";
@@ -218,7 +221,7 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
                     bValiderElt.className = "hidden";
                     
                 }
-                else if (data[result].correct == pElt[4].innerText)
+                else if (result[index].correct == pElt[4].innerText)
                 {
                     reponse4QElt.className = "correctionPositive";
                     reponse2QElt.className = "correctionNegative";
@@ -230,19 +233,19 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
 
             
             }
-            else if (data[result].correct !== pElt[2].innerText)
+            else if (result[index].correct !== pElt[2].innerText)
             {
                 //changement de class pour vérifier les bonne ou mauvaise question
                 reponse2QElt.className = "correctionNegative";
                 //Bulle de correction
                 divCorrectionAdd.className = "bulleCorrection";
-                divCorrectionAdd.innerText = data[result].correction;
+                divCorrectionAdd.innerText = result[index].correction;
                 //enlèves le boutton Valider
                 bValiderElt.className = "hidden";
                 // ajoute le bouton next
                 bouttonNextAdd.className = "bouttonNext";
 
-                if (data[result].correct == pElt[1].innerText)
+                if (result[index].correct == pElt[1].innerText)
                 {
                     reponse1QElt.className = "correctionPositive";
                     reponse3QElt.className = "correctionNegative";
@@ -251,7 +254,7 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
                     //enlèves le boutton Valider
                     bValiderElt.className = "hidden";
                 }
-                else if (data[result].correct == pElt[3].innerText)
+                else if (result[index].correct == pElt[3].innerText)
                 {
                     reponse3QElt.className = "correctionPositive";
                     reponse1QElt.className = "correctionNegative";
@@ -260,7 +263,7 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
                     //enlèves le boutton Valider
                     bValiderElt.className = "hidden";
                 }
-                else if (data[result].correct == pElt[4].innerText)
+                else if (result[index].correct == pElt[4].innerText)
                 {
                     reponse4QElt.className = "correctionPositive";
                     reponse1QElt.className = "correctionNegative";
@@ -270,19 +273,19 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
                     bValiderElt.className = "hidden";
                 }
             }
-            else if (data[result].correct !== pElt[3].innerText)
+            else if (result[index].correct !== pElt[3].innerText)
             {
                 //changement de class pour vérifier les bonne ou mauvaise question
                 reponse3QElt.className = "correctionNegative";
                 //Bulle de correction
                 divCorrectionAdd.className = "bulleCorrection";
-                divCorrectionAdd.innerText = data[result].correction;
+                divCorrectionAdd.innerText = result[index].correction;
                 //enlèves le boutton Valider
                 bValiderElt.className = "hidden";
                 // ajoute le bouton next
                 bouttonNextAdd.className = "bouttonNext";
 
-                if (data[result].correct == pElt[1].innerText)
+                if (result[index].correct == pElt[1].innerText)
                 {
                     reponse1QElt.className = "correctionPositive";
                     reponse2QElt.className = "correctionNegative";
@@ -291,7 +294,7 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
                     //enlèves le boutton Valider
                     bValiderElt.className = "hidden";
                 }
-                else if (data[result].correct == pElt[2].innerText)
+                else if (result[index].correct == pElt[2].innerText)
                 {
                     reponse2QElt.className = "correctionPositive";
                     reponse1QElt.className = "correctionNegative";
@@ -300,7 +303,7 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
                     //enlèves le boutton Valider
                     bValiderElt.className = "hidden";
                 }
-                else if (data[result].correct == pElt[4].innerText)
+                else if (result[index].correct == pElt[4].innerText)
                 {
                     reponse4QElt.className = "correctionPositive";
                     reponse2QElt.className = "correctionNegative";
@@ -310,19 +313,19 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
                     bValiderElt.className = "hidden";
                 }
             }
-            else if (data[result].correct !== pElt[4].innerText)
+            else if (result[index].correct !== pElt[4].innerText)
             {
                 //changement de class pour vérifier les bonne ou mauvaise question
                 reponse4QElt.className = "correctionNegative";
                 //Bulle de correction
                 divCorrectionAdd.className = "bulleCorrection";
-                divCorrectionAdd.innerText = data[result].correction;
+                divCorrectionAdd.innerText = result[index].correction;
                 //enlèves le boutton Valider
                 bValiderElt.className = "hidden";
                 // ajoute le bouton next
                 bouttonNextAdd.className = "bouttonNext";
 
-                if (data[result].correct == pElt[1].innerText)
+                if (result[index].correct == pElt[1].innerText)
                 {
                     reponse1QElt.className = "correctionPositive";
                     reponse2QElt.className = "correctionNegative";
@@ -331,7 +334,7 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
                     //enlèves le boutton Valider
                     bValiderElt.className = "hidden";
                 }
-                else if (data[result].correct == pElt[2].innerText)
+                else if (result[index].correct == pElt[2].innerText)
                 {
                     reponse2QElt.className = "correctionPositive";
                     reponse1QElt.className = "correctionNegative";
@@ -340,7 +343,7 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
                     //enlèves le boutton Valider
                     bValiderElt.className = "hidden";
                 }
-                else if (data[result].correct == pElt[3].innerText)
+                else if (result[index].correct == pElt[3].innerText)
                 {
                     reponse3QElt.className = "correctionPositive";
                     reponse1QElt.className = "correctionNegative";
@@ -368,33 +371,34 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
         //ajoutes
         bValiderElt.className = "buttonValider";
 
-
-
         //ajoute +1 a notre variable result pour jouer a la suite les question
-        console.log(pElt[0].innerText);
-        console.log(result);
-        result = ++result;
-        let cDataQ = data[result].question;
-        let cDataR1 = data[result].reponse1;
-        let cDataR2 = data[result].reponse2;
-        let cDataR3 = data[result].reponse3;
-        let cDataR4 = data[result].reponse4;
-        let cCorrection = data[result].correction;
-        console.log(result);
-        console.log(cDataQ);
-        console.log(cDataR1);
-        // remlace nos paragraphe dans nos bulle de question manu ma dis de mètres un
-        // égale au lieux de replace
+        console.log(index);
+        index = ++index ;
+        // stocker dans des variable change
+        let cDataQ = result[index].question;
+        let cDataR1 = result[index].reponse1;
+        let cDataR2 = result[index].reponse2;
+        let cDataR3 = result[index].reponse3;
+        let cDataR4 = result[index].reponse4;
+        let cCorrection = result[index].correction;
+        console.log(index);
+        // remlace nos paragraphe dans nos bulle de question 
         let changeQ = pElt[0].innerText = cDataQ;
         let changeP1 = pElt[1].innerText = cDataR1;
         let changeP2 = pElt[2].innerText = cDataR2;
         let changeP3 = pElt[3].innerText = cDataR3;
-        let changeP4 = pElt[4].innerText = cDataR4;      
+        let changeP4 = pElt[4].innerText = cDataR4;
+        
+        //passe sur la deuxièmes page si c'est la fin
+        if (index == 7)
+        {
+            console.log ("c'est fini !");
+            screen1Elt.className = "hidden";
+            screen2Elt.className = "screen2";
+        }
         
     })
-    // const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    // const shuffledArray = array.sort((a, b) => 0.5 - Math.random());
-    // console.log (shuffledArray);
+    // dans screen2
 
 })
 

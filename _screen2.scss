@@ -4,14 +4,14 @@
     display: flex;
     flex-flow: column;
     align-items: center;
-    gap: 3%;
+    gap: 35px;
 
     .boxScore
     {
         border-radius: 5%;
         background-color: #02427C;
         border-radius: 20px;
-        height: 70px;
+        height: 100px;
         width: 70%;
     }
     .boxResult
@@ -19,7 +19,7 @@
         border-radius: 5%;
         background-color: #02427C;
         border-radius: 10px;
-        height: 60%;
+        height: 500px;
         width: 100%;
         display: flex;
         justify-content: center;
@@ -33,7 +33,7 @@
     .buttonRetry
     {
         width: 100%;
-        height: 50px;
+        height: 75px;
         border: 2px #02427C solid;
         border-radius: 10px;
         background-color: #0758a3 ;
