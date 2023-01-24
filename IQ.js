@@ -19,18 +19,12 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
     // screen1Elt.className = "hidden";
     // screen2Elt.className = "screen2";
     
-    //fonction random de 0 a 7 donc 8
-    const random = (number) =>
-    {
-        return Math.floor(Math.random() * (number));
-    }
-
-    // ajouter cette fonction ramdom a nos élément
+    //crée une function aléatoire pour nos élément fonctionne comme si on mélanger un jeux de carte
     let index = 0
     let result = data.sort((a, b) => 0.5 - Math.random());
     console.log (result);
-    // let result = random(8);
-    // let result = random(8); // result sert a jouer notre fonction et avoir les mème résultat sur notre json
+    
+    // ajouter cette fonction ramdom a nos élément 
     let dataQ = result[index].question;
     let dataR1 = result[index].reponse1;
     let dataR2 = result[index].reponse2;
@@ -114,7 +108,7 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
         if (result[index].correct == pElt[1].innerText && radio1Elt.checked == true )
         {
             //prend +1 a chaque bonne réponse grace a la variable score
-            boxScoreELt.innerHTML = "Score : " + ++score
+            boxScoreELt.innerHTML = "Score : " + ++score;
             //changement de class pour vérifier les bonne ou mauvaise question
             reponse1QElt.className = "correctionPositive";
             reponse2QElt.className = "correctionNegative";
@@ -133,7 +127,7 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
         else if (result[index].correct == pElt[2].innerText && radio2Elt.checked == true )
         {
             //prend +1 a chaque bonne réponse grace a la variable score
-            boxScoreELt.innerHTML = "Score : " + ++score
+            boxScoreELt.innerHTML = "Score : " + ++score;
             //changement de class pour vérifier les bonne ou mauvaise question
             reponse2QElt.className = "correctionPositive";
             reponse1QElt.className = "correctionNegative";
@@ -151,7 +145,7 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
         else if (result[index].correct == pElt[3].innerText && radio3Elt.checked == true )
         {
             //prend +1 a chaque bonne réponse grace a la variable score
-            boxScoreELt.innerHTML = "Score : " + ++score
+            boxScoreELt.innerHTML = "Score : " + ++score;
             //changement de class pour vérifier les bonne ou mauvaise question
             reponse3QElt.className = "correctionPositive";
             reponse2QElt.className = "correctionNegative";
@@ -168,7 +162,7 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
         else if (result[index].correct == pElt[4].innerText && radio4Elt.checked == true )
         {
             //prend +1 a chaque bonne réponse grace a la variable score
-            boxScoreELt.innerHTML = "Score : " + ++score
+            boxScoreELt.innerHTML = "Score : " + ++score;
             //changement de class pour vérifier les bonne ou mauvaise question
             reponse4QElt.className = "correctionPositive";
             reponse2QElt.className = "correctionNegative";
@@ -388,17 +382,57 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
         let changeP2 = pElt[2].innerText = cDataR2;
         let changeP3 = pElt[3].innerText = cDataR3;
         let changeP4 = pElt[4].innerText = cDataR4;
-        
+  
+        // il y a un bug ici il ne joue pas la dernières question
         //passe sur la deuxièmes page si c'est la fin
         if (index == 7)
         {
             console.log ("c'est fini !");
             screen1Elt.className = "hidden";
             screen2Elt.className = "screen2";
+            LeaderboardValidation();
         }
-        
     })
     // dans screen2
+    //ciblier le boutton retry
+    const buttonRetryElt = document.querySelector("#buttonRetry");
+    //quand je click sur retry recommence le quizz
+    buttonRetry.addEventListener("click", ()=>
+    {
+        //re mélanger le tableaux
+        index = 0
+        console.log (index);
+        //mètres le score a 0
+        score = 0;
+        boxScoreELt.innerHTML = "Score : " + score ;
+        //change d'écran
+        screen1Elt.className = "containerQuestion";
+        screen2Elt.className = "hidden";
+    })
+
+    //localStorage
+    function LeaderboardValidation(event) {
+        // CRÉER MON TABLEAU VIDE //
+        if( localStorage.getItem("save") == null) {
+            localStorage.setItem("save", "[]");
+        }
+        // CREER LES OBJETS //
+        let leaderboardPlayers = {
+            score: score
+        }
+        let old_data = JSON.parse(localStorage.getItem("save"));
+        old_data.push(leaderboardPlayers);
+
+        localStorage.setItem("save", JSON.stringify(old_data));
+
+        let leaderboardStored = JSON.parse(localStorage.getItem("save"));
+
+        // TRIER LE TABLEAU DES SCORES //
+        leaderboardStored.sort((a, b) => {
+            return b.score - a.score
+        })
+        console.log(leaderboardStored[0])
+    }
 
 })
 
