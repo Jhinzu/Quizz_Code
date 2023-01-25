@@ -1,0 +1,31 @@
+faire un quizz sur le theme Html , Css , Js 
+
+Quizz étapes
+
+1.faire des question aléatoire qui change a chaque visite grace a un fichier Json
+
+2.faire 4 boutton radio /checkbox avec une seule réponse possible
+
+3.avec un bouton valider en bas de la page une fois les case cocher 
+
+4.apres le bouton clicker avoir la bonne réponse avec les réponse en rouge et les réponse en verte , avec un affichage des score
+
+5. apporté des informations supplémentaire lors de l'affichage des réponse
+
+6. en fin de partie les 5 meilleurs scores avec le nom du détenteurs
+
+
+critère de performance 
+
+1.min 25 question
+
+
+Livrable 
+1.Wireframe et makette format pdf ( dans le github ) 
+
+2.makette mobile et pc pdf ( dans github ) 
+
+3.lien trello 
+
+l'url du dépot github
+ 

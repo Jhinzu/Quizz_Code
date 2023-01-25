@@ -2,6 +2,69 @@
 .hidden
 {
     display: none;
+    
+    @media screen and (min-width: 992px)
+    {
+    .screen2
+{
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 35px;
+    .boxScore
+    {
+        border-radius: 5%;
+        background-color: #02427C;
+        border-radius: 20px;
+        height: 100px;
+        width: 70%;
+    }
+    .boxResult
+    {
+        border-radius: 5%;
+        background-color: #02427C;
+        border-radius: 10px;
+        height: 500px;
+        width: 100%;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        h2
+        {
+            color: white;
+            font-size: 2em;
+        }
+    }
+    .buttonRetry
+    {
+        width: 100%;
+        height: 75px;
+        border: 2px #02427C solid;
+        border-radius: 10px;
+        background-color: #0758a3 ;
+        font-size: 1.5em;
+        color: black;
+    }
+    .tablePlayer
+    {
+        width: 100%;
+        height: 100%;
+    }
+    .tBodyPlayer
+    {
+        font-size: 2em;
+        display: flex;
+        flex-flow: column;
+        gap: 20px;
+        align-items: center;
+        color: white;
+    }
+
+    
+}
+            
+    }
 }
 
 .show 
@@ -52,6 +115,10 @@
     color: white;
     text-align: center;
     font-size: 0.9em;
+    @media screen and (min-width: 768px)
+        {
+            font-size: 1.5em;
+        }
 }
 
 .bouttonNext
@@ -63,4 +130,8 @@
     background-color: #0758a3 ;
     font-size: 1em;
     color: white;
+    @media screen and (min-width: 768px)
+        {
+            font-size: 1.5em;
+        }
 }

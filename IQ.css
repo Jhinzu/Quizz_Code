@@ -1,6 +1,57 @@
 .hidden {
   display: none;
 }
+@media screen and (min-width: 992px) {
+  .hidden .screen2 {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 35px;
+  }
+  .hidden .screen2 .boxScore {
+    border-radius: 5%;
+    background-color: #02427C;
+    border-radius: 20px;
+    height: 100px;
+    width: 70%;
+  }
+  .hidden .screen2 .boxResult {
+    border-radius: 5%;
+    background-color: #02427C;
+    border-radius: 10px;
+    height: 500px;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+  }
+  .hidden .screen2 .boxResult h2 {
+    color: white;
+    font-size: 2em;
+  }
+  .hidden .screen2 .buttonRetry {
+    width: 100%;
+    height: 75px;
+    border: 2px #02427C solid;
+    border-radius: 10px;
+    background-color: #0758a3;
+    font-size: 1.5em;
+    color: black;
+  }
+  .hidden .screen2 .tablePlayer {
+    width: 100%;
+    height: 100%;
+  }
+  .hidden .screen2 .tBodyPlayer {
+    font-size: 2em;
+    display: flex;
+    flex-flow: column;
+    gap: 20px;
+    align-items: center;
+    color: white;
+  }
+}
 
 .show {
   display: block;
@@ -47,6 +98,11 @@
   text-align: center;
   font-size: 0.9em;
 }
+@media screen and (min-width: 768px) {
+  .bulleCorrection {
+    font-size: 1.5em;
+  }
+}
 
 .bouttonNext {
   width: 50%;
@@ -56,6 +112,11 @@
   background-color: #0758a3;
   font-size: 1em;
   color: white;
+}
+@media screen and (min-width: 768px) {
+  .bouttonNext {
+    font-size: 1.5em;
+  }
 }
 
 * {
@@ -74,10 +135,20 @@
   flex-flow: row;
   justify-content: center;
 }
-.containerAll .boxTitre h1 {
+@media screen and (min-width: 768px) {
+  .containerAll .boxTitre img {
+    height: 150px;
+  }
+}
+.containerAll h1 {
   color: white;
   display: flex;
   align-items: center;
+}
+@media screen and (min-width: 768px) {
+  .containerAll h1 {
+    font-size: 3em;
+  }
 }
 
 .containerQuestion {
@@ -120,6 +191,12 @@
   font-size: 1em;
   color: white;
 }
+@media screen and (min-width: 768px) {
+  .containerQuestion .buttonValider {
+    font-size: 1.5em;
+    height: 80px;
+  }
+}
 .containerQuestion .radio1, .containerQuestion .radio2, .containerQuestion .radio3, .containerQuestion .radio4 {
   display: none;
 }
@@ -130,12 +207,23 @@
   color: white;
   text-align: center;
 }
+@media screen and (min-width: 768px) {
+  .containerQuestion .pStyle {
+    font-size: 1.5em;
+  }
+}
 .containerQuestion .boxScore {
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   font-size: 1.5em;
+}
+@media screen and (min-width: 768px) {
+  .containerQuestion .boxScore {
+    font-size: 2em;
+    height: 80px;
+  }
 }
 
 .screen2 {
@@ -144,6 +232,11 @@
   flex-flow: column;
   align-items: center;
   gap: 35px;
+}
+@media screen and (min-width: 992px) {
+  .screen2 {
+    display: block;
+  }
 }
 .screen2 .boxScore {
   border-radius: 5%;
@@ -159,7 +252,8 @@
   height: 500px;
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-flow: column;
+  align-items: center;
 }
 .screen2 .boxResult h2 {
   color: white;
@@ -173,4 +267,16 @@
   background-color: #0758a3;
   font-size: 1.5em;
   color: black;
+}
+.screen2 .tablePlayer {
+  width: 100%;
+  height: 100%;
+}
+.screen2 .tBodyPlayer {
+  font-size: 2em;
+  display: flex;
+  flex-flow: column;
+  gap: 20px;
+  align-items: center;
+  color: white;
 }/*# sourceMappingURL=IQ.css.map */

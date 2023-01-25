@@ -18,11 +18,25 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
     screen2Elt.className = "hidden";
     // screen1Elt.className = "hidden";
     // screen2Elt.className = "screen2";
+
+    //crée un prompt pour l'utilisateur
+    // const saisieNomElt = document.querySelector("#saisieNom");
+    // const valideNomElt = document.querySelector("#valideNom");
+
+    // valideNomElt.addEventListener("click",()=>
+    // {
+    //     namePlayer = saisieNomElt.value;
+    //     console.log (namePlayer);
+    // })
+
+    
+    
+
     
     //crée une function aléatoire pour nos élément fonctionne comme si on mélanger un jeux de carte
     let index = 0
     let result = data.sort((a, b) => 0.5 - Math.random());
-    console.log (result);
+    console.log(result)
     
     // ajouter cette fonction ramdom a nos élément 
     let dataQ = result[index].question;
@@ -365,9 +379,20 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
         //ajoutes
         bValiderElt.className = "buttonValider";
 
+        //passe sur la deuxièmes page si c'est la fin
         //ajoute +1 a notre variable result pour jouer a la suite les question
         console.log(index);
-        index = ++index ;
+        ++index ;
+        if (index >= result.length)
+        {
+            // joue la focntion du local storage
+            LeaderboardValidation();
+            //fin de partie passe sur le screen2
+            console.log ("c'est fini !");
+            screen1Elt.className = "hidden";
+            screen2Elt.className = "screen2";
+            return
+        }
         // stocker dans des variable change
         let cDataQ = result[index].question;
         let cDataR1 = result[index].reponse1;
@@ -382,16 +407,6 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
         let changeP2 = pElt[2].innerText = cDataR2;
         let changeP3 = pElt[3].innerText = cDataR3;
         let changeP4 = pElt[4].innerText = cDataR4;
-  
-        // il y a un bug ici il ne joue pas la dernières question
-        //passe sur la deuxièmes page si c'est la fin
-        if (index == 7)
-        {
-            console.log ("c'est fini !");
-            screen1Elt.className = "hidden";
-            screen2Elt.className = "screen2";
-            LeaderboardValidation();
-        }
     })
     // dans screen2
     //ciblier le boutton retry
@@ -400,26 +415,34 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
     buttonRetry.addEventListener("click", ()=>
     {
         //re mélanger le tableaux
-        index = 0
+        index = 0;
         console.log (index);
+        //re affiche la question 0
+        pElt[0].innerText = result[index].question;
+        pElt[1].innerText = result[index].reponse1;
+        pElt[2].innerText = result[index].reponse2;
+        pElt[3].innerText = result[index].reponse3;
+        pElt[4].innerText = result[index].reponse4;
         //mètres le score a 0
         score = 0;
         boxScoreELt.innerHTML = "Score : " + score ;
         //change d'écran
         screen1Elt.className = "containerQuestion";
         screen2Elt.className = "hidden";
+        //demander qui est le nouveaux utilisateur 
     })
 
     //localStorage
-    function LeaderboardValidation(event) {
-        // CRÉER MON TABLEAU VIDE //
+    function LeaderboardValidation() {
+        // crée un tableaux 
         if( localStorage.getItem("save") == null) {
             localStorage.setItem("save", "[]");
         }
-        // CREER LES OBJETS //
+        // crée les objet
         let leaderboardPlayers = {
-            score: score
+            total: score
         }
+
         let old_data = JSON.parse(localStorage.getItem("save"));
         old_data.push(leaderboardPlayers);
 
@@ -429,10 +452,12 @@ fetch("IQ.json") // envoie notre dossier json dans notre serv
 
         // TRIER LE TABLEAU DES SCORES //
         leaderboardStored.sort((a, b) => {
-            return b.score - a.score
+            return b.total - a.total
         })
-        console.log(leaderboardStored[0])
+        //afficher le score via cette boucle qui queryselector ajoute et change de style 
+        for (let i = 0; i < Math.min(5, leaderboardStored.length); i++) {
+            document.querySelector(`#player${i+1}`).childNodes[1].innerText = `Player-${i+1} : ` + leaderboardStored[i].total;
+            document.querySelector(`#player${i+1}`).childNodes[1].style.display = "unset"
+        }
     }
-
 })
-
